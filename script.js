@@ -70,8 +70,6 @@ d3.csv('wealth-health-2014.csv', d3.autoType).then(data=>{
             .style("opacity", 0)
         });
      
-
-    //Visualize thr scales using axes
     const xAxis = d3.axisBottom()
         .scale(xScale)
         .ticks(5,'s');
@@ -89,15 +87,12 @@ d3.csv('wealth-health-2014.csv', d3.autoType).then(data=>{
         .attr("class", "axis y-axis")
         .call(yAxis);
 
-
-    //x-axis label 
     svg.append("text")
         .attr("text-anchor", "end")
         .attr("x", width)
         .attr("y", height - 10)
         .text("Income");
 
-    //y-axis label
     svg.append("text")
         .attr("class", "y label")
         .attr("x", - margin.left)
@@ -107,10 +102,7 @@ d3.csv('wealth-health-2014.csv', d3.autoType).then(data=>{
 
     var legendRectSize = 15;                                  
     var legendSpacing = 3;  
-    
-
-    //legend
-    const legend = svg.selectAll('.legend')                     
+        const legend = svg.selectAll('.legend')                     
         .data(colorScale.domain())                                   
         .enter()                                                
         .append('g')                                            
@@ -123,13 +115,11 @@ d3.csv('wealth-health-2014.csv', d3.autoType).then(data=>{
               return 'translate(' + horz + ',' + vert + ')';        
             });        
 
-        //add the rectangles
         legend.append('rect')
           .attr('width', legendRectSize)     
           .attr('height', legendRectSize)           
           .style('fill', colorScale) 
 
-        // add the text
         legend.append('text')
           .attr('x', legendRectSize + 4)
           .attr('y', legendRectSize - 3)
